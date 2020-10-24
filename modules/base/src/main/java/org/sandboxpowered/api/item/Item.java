@@ -9,6 +9,7 @@ import org.sandboxpowered.api.state.BlockState;
 import org.sandboxpowered.api.util.InteractionResult;
 import org.sandboxpowered.api.util.Mono;
 import org.sandboxpowered.api.util.math.Position;
+import org.sandboxpowered.api.util.nbt.CompoundTag;
 import org.sandboxpowered.api.util.text.Text;
 import org.sandboxpowered.api.world.World;
 
@@ -48,6 +49,14 @@ public interface Item extends Content<Item> {
         return false;
     }
 
+    default CompoundTag writeSyncTag(ItemStack stack) {
+        return stack.getTag();
+    }
+
+    default void readSyncTag(ItemStack stack, CompoundTag tag) {
+        stack.setTag(tag);
+    }
+
     default <X> Mono<X> getComponent(Component<X> component) {
         return getComponent(component, ItemStack.empty());
     }
@@ -60,9 +69,6 @@ public interface Item extends Content<Item> {
         private int stackSize = 64;
         private int maxDamage;
         private Item recipeRemainder;
-
-        public Settings() {
-        }
 
         public int getMaxDamage() {
             return maxDamage;
@@ -80,7 +86,7 @@ public interface Item extends Content<Item> {
 
         public Settings setStackSize(int stackSize) {
             if (this.maxDamage > 0) {
-                throw new RuntimeException("Unable to have damage AND stack.");
+                throw new UnsupportedOperationException("Unable to have damage AND stack.");
             } else {
                 this.stackSize = stackSize;
                 return this;

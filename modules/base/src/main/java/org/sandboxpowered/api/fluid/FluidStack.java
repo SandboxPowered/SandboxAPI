@@ -49,7 +49,7 @@ public interface FluidStack {
 
     CompoundTag getTag();
 
-    void setTag(CompoundTag tag);
+    void setTag(CompoundTag stackTag);
 
     CompoundTag getOrCreateTag();
 

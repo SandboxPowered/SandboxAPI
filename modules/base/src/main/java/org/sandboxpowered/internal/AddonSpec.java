@@ -6,6 +6,7 @@ import com.github.zafarkhaja.semver.Version;
 import org.jetbrains.annotations.Nullable;
 import org.sandboxpowered.api.addon.AddonInfo;
 import org.sandboxpowered.api.addon.LoadingSide;
+import org.sandboxpowered.api.addon.PlatformSupport;
 import org.sandboxpowered.api.util.Identity;
 import org.sandboxpowered.api.util.annotation.Internal;
 
@@ -145,8 +146,8 @@ public class AddonSpec implements AddonInfo {
     }
 
     @Override
-    public AddonSpec.PlatformSupport getPlatformSupport(Identity platform) {
-        return platforms.containsKey(platform.toString()) ? platforms.get(platform.toString()) ? AddonSpec.PlatformSupport.YES : AddonSpec.PlatformSupport.NO : AddonSpec.PlatformSupport.MAYBE;
+    public PlatformSupport getPlatformSupport(Identity platform) {
+        return platforms.containsKey(platform.toString()) ? platforms.get(platform.toString()) ? PlatformSupport.YES : PlatformSupport.NO : PlatformSupport.MAYBE;
     }
 
     public String getMainClass() {

@@ -5,6 +5,6 @@
   "environment": "*",
   "custom": {
     "modmenu:api": true,
-    "modmenu:parent": "sandbox"
+    "modmenu:parent": Sandbox.ID
   }
 }

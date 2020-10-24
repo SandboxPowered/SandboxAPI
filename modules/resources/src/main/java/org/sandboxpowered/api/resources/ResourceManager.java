@@ -6,6 +6,7 @@ import org.sandboxpowered.api.fluid.Fluid;
 import org.sandboxpowered.api.item.Item;
 import org.sandboxpowered.api.item.Items;
 import org.sandboxpowered.api.util.Identity;
+import org.sandboxpowered.internal.Sandbox;
 
 import java.util.HashMap;
 import java.util.Map;

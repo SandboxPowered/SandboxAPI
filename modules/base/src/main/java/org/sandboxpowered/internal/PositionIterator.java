@@ -15,13 +15,13 @@ public class PositionIterator {
     private int z;
     private boolean complete;
 
-    public PositionIterator(int int_1, int int_2, int int_3, int int_4, int int_5, int int_6) {
-        this.startX = int_1;
-        this.startY = int_2;
-        this.startZ = int_3;
-        this.endX = int_4;
-        this.endY = int_5;
-        this.endZ = int_6;
+    public PositionIterator(int startX, int startY, int startZ, int endX, int endY, int endZ) {
+        this.startX = startX;
+        this.startY = startY;
+        this.startZ = startZ;
+        this.endX = endX;
+        this.endY = endY;
+        this.endZ = endZ;
     }
 
     public boolean step() {
