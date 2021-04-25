@@ -4,6 +4,22 @@ plugins {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(16)
+        languageVersion = JavaLanguageVersion.of(14)
     }
+}
+
+repositories {
+    maven {
+        url "https://maven.modded-mc.com/repository/maven-public/"
+    }
+}
+
+dependencies {
+    implementation group: 'org.joml', name: 'joml', version: '1.10.1'
+    implementation group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+    implementation group: 'com.mojang', name: 'datafixerupper', version: '1.0.20'
+    implementation group: 'com.mojang', name: 'brigadier', version: '1.0.17'
+    implementation group: 'com.google.inject', name: 'guice', version: '5.0.1'
+
 }
