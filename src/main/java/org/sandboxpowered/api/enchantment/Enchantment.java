@@ -12,8 +12,14 @@ public interface Enchantment extends RegistryEntry<Enchantment> {
     @Range(from = 1, to = Integer.MAX_VALUE)
     int getMaxLevel();
 
+    /**
+     * @return whether this enchantment is compatible with the other
+     */
     boolean isCompatible(Enchantment other);
 
+    /**
+     * @return whether this enchantment can be applied on the specified item
+     */
     boolean canApplyOn(ItemStack stack);
 
     /**
@@ -27,4 +33,24 @@ public interface Enchantment extends RegistryEntry<Enchantment> {
      * and <strong>not</strong> be applied at an enchanting table
      */
     boolean isTreasure();
+
+    Rarity getRarity();
+
+    enum Rarity {
+        COMMON(10),
+        UNCOMMON(5),
+        RARE(2),
+        VERY_RARE(1);
+
+        private final int weight;
+
+        Rarity(int weight) {
+            this.weight = weight;
+        }
+
+        @Range(from = 1, to = 10)
+        public int getWeight() {
+            return weight;
+        }
+    }
 }

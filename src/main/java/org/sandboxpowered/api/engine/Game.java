@@ -18,4 +18,6 @@ public interface Game {
     boolean isClientAvailable();
 
     Client getClient() throws UnsupportedEngineException;
+
+    FactoryProvider getFactoryProvider();
 }
