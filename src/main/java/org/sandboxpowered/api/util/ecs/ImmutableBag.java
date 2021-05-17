@@ -1,6 +1,4 @@
-package org.sandboxpowered.api.util;
-
-import it.unimi.dsi.fastutil.ints.IntIterable;
+package org.sandboxpowered.api.util.ecs;
 
 /**
  * A non-modifiable bag.
@@ -12,7 +10,7 @@ import it.unimi.dsi.fastutil.ints.IntIterable;
  *
  * @see Bag
  */
-public interface ImmutableIntBag extends IntIterable {
+public interface ImmutableBag<E> extends Iterable<E> {
     /**
      * Returns the element at the specified position in Bag.
      *
@@ -23,7 +21,7 @@ public interface ImmutableIntBag extends IntIterable {
      * @throws ArrayIndexOutOfBoundsException if the index is out of range
      *         ({@code index < 0 || index >= size()})
      */
-    int get(int index);
+    E get(int index);
 
     /**
      * Returns the number of elements in this bag.
@@ -44,7 +42,7 @@ public interface ImmutableIntBag extends IntIterable {
      *
      * @return true if the bag contains this element
      */
-    boolean contains(int element);
+    boolean contains(E value);
 
     /**
      * Checks if the internal storage supports this index.

@@ -10,7 +10,7 @@ import java.util.Random;
 import java.util.function.Supplier;
 
 public interface DynamicBakedModel extends BakedModel {
-    void emitQuads(WorldReader reader, BlockState state, Vector3ic position, Supplier<Random> randomSupplier, RenderContext context);
+    void emitMesh(WorldReader reader, BlockState state, Vector3ic position, Supplier<Random> randomSupplier, RenderContext context);
 
-    void emitItemQuads(ItemStack stack, Supplier<Random> randomSupplier, RenderContext context);
+    void emitItemMesh(ItemStack stack, Supplier<Random> randomSupplier, RenderContext context);
 }

@@ -1,14 +1,12 @@
-package org.sandboxpowered.api.util;
+package org.sandboxpowered.api.util.ecs;
 
-import java.util.Comparator;
+import it.unimi.dsi.fastutil.ints.IntComparator;
 
 /**
  * Collection type a bit like ArrayList but does not preserve the order of its
  * entities, speedwise it is very good, especially suited for games.
- *
- * @param <E> object type this bag holds
  */
-public interface Bag<E> extends ImmutableBag<E> {
+public interface IntBag extends ImmutableIntBag {
 
     /**
      * Removes the element at the specified position in this Bag.
@@ -23,19 +21,19 @@ public interface Bag<E> extends ImmutableBag<E> {
      *
      * @throws ArrayIndexOutOfBoundsException if the index is out of range ({@code index < 0 || index >= size()})
      */
-    E remove(int index);
+    int remove(int index);
 
     /**
-     * Sorts the bag using a {@link Comparator}.
+     * Sorts the bag using a {@link IntComparator}.
      */
-    void sort(Comparator<E> comparator);
+    void sort(IntComparator comparator);
 
     /**
      * Remove and return the last object in the bag.
      *
-     * @return the last object in the bag, null if empty
+     * @return the last object in the bag, -1 if empty
      */
-    E removeLast();
+    int removeLast();
 
     /**
      * Removes the first occurrence of the specified element from this Bag, if
@@ -49,7 +47,7 @@ public interface Bag<E> extends ImmutableBag<E> {
      *
      * @return {@code true} if this list contained the specified element
      */
-    boolean remove(E element);
+    boolean removeValue(int element);
 
     /**
      * Removes from this Bag all of its elements that are contained in the
@@ -59,7 +57,7 @@ public interface Bag<E> extends ImmutableBag<E> {
      *
      * @return {@code true} if this Bag changed as a result of the call
      */
-    boolean removeAll(ImmutableBag<E> bag);
+    boolean removeAll(ImmutableIntBag bag);
 
     /**
      * Adds the specified element to the end of this bag.
@@ -69,14 +67,14 @@ public interface Bag<E> extends ImmutableBag<E> {
      *
      * @param element element to be added to this list
      */
-    void add(E element);
+    void add(int element);
 
     /**
      * Add all items into this bag.
      *
      * @param bag bag with items to add
      */
-    void addAll(ImmutableBag<E> bag);
+    void addAll(ImmutableIntBag bag);
 
     /**
      * Set element at specified index in the bag.
@@ -84,7 +82,7 @@ public interface Bag<E> extends ImmutableBag<E> {
      * @param index position of element
      * @param element the element
      */
-    void set(int index, E element);
+    void set(int index, int element);
 
     /**
      * Removes all of the elements from this bag.
