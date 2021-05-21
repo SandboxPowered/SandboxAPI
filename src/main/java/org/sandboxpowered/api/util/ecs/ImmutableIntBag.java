@@ -3,12 +3,10 @@ package org.sandboxpowered.api.util.ecs;
 import it.unimi.dsi.fastutil.ints.IntIterable;
 
 /**
- * A non-modifiable bag.
+ * A non-modifiable intbag.
  * <p>
  * A bag is a set that can also hold duplicates. Also known as multiset.
  * </p>
- *
- * @param <E> object type this bag holds
  *
  * @see Bag
  */
