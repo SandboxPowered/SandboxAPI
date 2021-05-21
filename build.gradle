@@ -1,5 +1,40 @@
 plugins {
-    id 'java'
+    id 'java-library'
+    id 'maven-publish'
+    id "me.qoomon.git-versioning" version "4.2.0"
+}
+
+def ENV = System.getenv()
+
+def releasesRepoUrl = "https://maven.modded-mc.com/repository/sandbox-maven/"
+def snapshotsRepoUrl = "https://maven.modded-mc.com/repository/sandbox-snapshot/"
+
+version = '1.0.0-SNAPSHOT'
+
+gitVersioning.apply {
+    branch {
+        pattern = 'main'
+        versionFormat = '${version}'
+    }
+    branch {
+        pattern = 'feature/(?<feature>.+)'
+        versionFormat = '${feature}-SNAPSHOT'
+    }
+    branch {
+        pattern = 'pull/.+'
+        versionFormat = '${branch}-SNAPSHOT'
+    }
+    tag {
+        pattern = 'v(?<tagVersion>[0-9].*)'
+        versionFormat = '${tagVersion}'
+    }
+    tag {
+        pattern = 'release/(?<tagVersion>[0-9].*)'
+        versionFormat = '${tagVersion}'
+    }
+    commit {
+        versionFormat = '${commit.short}'
+    }
 }
 
 java {
@@ -15,11 +50,38 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.joml', name: 'joml', version: '1.10.1'
-    implementation group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
-    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-    implementation group: 'com.mojang', name: 'datafixerupper', version: '1.0.20'
-    implementation group: 'com.mojang', name: 'brigadier', version: '1.0.17'
-    implementation group: 'com.google.inject', name: 'guice', version: '5.0.1'
+    api group: 'org.joml', name: 'joml', version: '1.10.1'
+    api group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
+    api group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+    api group: 'com.mojang', name: 'datafixerupper', version: '1.0.20'
+    api group: 'com.mojang', name: 'brigadier', version: '1.0.17'
+    api group: 'com.google.inject', name: 'guice', version: '5.0.1'
+}
 
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier('sources')
+    from sourceSets.main.allSource
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId 'org.sandboxpowered.api'
+            artifactId 'api'
+            version project.version
+
+            artifact jar
+            artifact sourcesJar
+        }
+    }
+
+    repositories {
+        maven {
+            url = rootProject.version.endsWith("-SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+            credentials {
+                username ENV.MAVEN_USER
+                password ENV.MAVEN_PASS
+            }
+        }
+    }
 }
