@@ -22,15 +22,26 @@ fi'''
       }
     }
 
+    stage('Test') {
+      steps {
+        timeout(unit: 'MINUTES', time: 10) {
+          sh '''./gradlew test'''
+        }
+
+      }
+    }
+
     stage('Publishing') {
       parallel {
         stage('Gradle Publish') {
           steps {
-            sh '''#!/bin/bash
+            timeout(unit: 'MINUTES', time: 10) {
+              sh '''#!/bin/bash
 
 if [[ "$GIT_BRANCH" != origin/pull/* ]]; then
     ./gradlew publish
 fi'''
+            }
           }
         }
 
