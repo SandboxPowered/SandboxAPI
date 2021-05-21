@@ -41,6 +41,8 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(16)
     }
+    withJavadocJar()
+    withSourcesJar()
 }
 
 repositories {
@@ -58,11 +60,6 @@ dependencies {
     api group: 'com.google.inject', name: 'guice', version: '5.0.1'
 }
 
-task sourcesJar(type: Jar, dependsOn: classes) {
-    classifier('sources')
-    from sourceSets.main.allSource
-}
-
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -70,8 +67,7 @@ publishing {
             artifactId 'api'
             version project.version
 
-            artifact jar
-            artifact sourcesJar
+            from components.java
         }
     }
 
