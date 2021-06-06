@@ -1,10 +1,15 @@
 package org.sandboxpowered.api.enchantment;
 
 import org.jetbrains.annotations.Range;
+import org.sandboxpowered.api.item.Item;
 import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
+import org.sandboxpowered.api.registry.RegistryFactory;
 
 public interface Enchantment extends RegistryEntry<Enchantment> {
+    Registry<Enchantment> REGISTRY = RegistryFactory.getRegistry(Enchantment.class);
+
     ItemStack getEnchantedBook();
 
     ItemStack getEnchantedBook(int level);

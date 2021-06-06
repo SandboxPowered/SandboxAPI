@@ -3,12 +3,19 @@ package org.sandboxpowered.api.item;
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.item.tool.ToolMaterial;
 import org.sandboxpowered.api.item.tool.ToolType;
+import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
+import org.sandboxpowered.api.registry.RegistryFactory;
 import org.sandboxpowered.api.world.state.BlockState;
 
 import java.util.Set;
 
 public interface Item extends RegistryEntry<Item> {
+    Registry<Item> REGISTRY = RegistryFactory.getRegistry(Item.class);
+
+    static Item create(Properties properties) {
+        return new AbstractItem(properties) {};
+    }
 
     Properties getProperties();
 
@@ -25,6 +32,11 @@ public interface Item extends RegistryEntry<Item> {
     boolean isEffectiveOn(ItemStack stack, BlockState state);
 
     boolean isCorrectToolForDrops(ItemStack stack, BlockState state);
+
+    @Override
+    default Registry<Item> getRegistry() {
+        return REGISTRY;
+    }
 
     interface Properties {
         static Builder builder() {
