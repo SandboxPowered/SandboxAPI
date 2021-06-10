@@ -1,13 +1,16 @@
 package org.sandboxpowered.api.item;
 
 import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.entity.Entity;
 import org.sandboxpowered.api.item.tool.ToolMaterial;
 import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
+import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 
+import java.util.Properties;
 import java.util.Set;
 
 public interface Item extends RegistryEntry<Item> {
@@ -33,6 +36,12 @@ public interface Item extends RegistryEntry<Item> {
     boolean isEffectiveOn(ItemStack stack, BlockState state);
 
     boolean isCorrectToolForDrops(ItemStack stack, BlockState state);
+
+    /**
+     * @param world The world in which the entity using the item exists
+     * @param user The entity using the item, has {@link org.sandboxpowered.api.entity.InventoryComponent}
+     */
+    UsageResult<ItemStack> use(World world, Entity user, Hand hand);
 
     @Override
     default Registry<Item> getRegistry() {

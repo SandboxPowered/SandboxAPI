@@ -2,6 +2,7 @@ package org.sandboxpowered.api.item;
 
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.enchantment.Enchantment;
+import org.sandboxpowered.api.entity.Entity;
 
 public interface ItemStack {
     static ItemStack empty() {
@@ -27,6 +28,12 @@ public interface ItemStack {
     int getLevel(Enchantment enchantment);
 
     Enchantment[] getEnchantments();
+
+    void damage(int amount, Entity user);
+
+    int getCurrentDamage();
+
+    int getMaxDamage();
 
     interface ItemStackFactory {
         ItemStack empty();

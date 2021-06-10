@@ -14,5 +14,4 @@ public class RotationComponent implements PooledComponent {
     public void reset() {
         this.rotation.set(0, 0, 0, 0);
     }
-
 }

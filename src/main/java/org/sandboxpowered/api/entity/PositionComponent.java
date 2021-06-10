@@ -14,5 +14,4 @@ public class PositionComponent implements PooledComponent {
     public void reset() {
         this.pos.set(0);
     }
-
 }

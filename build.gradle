@@ -1,35 +1,37 @@
 plugins {
-    id 'java-library'
-    id 'maven-publish'
+    id "java-library"
+    id "maven-publish"
     id "me.qoomon.git-versioning" version "4.2.0"
+    id 'org.jetbrains.kotlin.jvm' version '1.5.20-RC'
 }
 
 def ENV = System.getenv()
 
 def releasesRepoUrl = "https://maven.modded-mc.com/repository/sandbox-maven/"
 def snapshotsRepoUrl = "https://maven.modded-mc.com/repository/sandbox-snapshot/"
+def javaVersion = JavaLanguageVersion.of(16)
 
-version = '1.0.0-SNAPSHOT'
+version = "1.0.0-SNAPSHOT"
 
 gitVersioning.apply {
     branch {
-        pattern = 'main'
+        pattern = "main"
         versionFormat = '${version}'
     }
     branch {
-        pattern = 'feature/(?<feature>.+)'
+        pattern = "feature/(?<feature>.+)"
         versionFormat = '${feature}-SNAPSHOT'
     }
     branch {
-        pattern = 'pull/.+'
+        pattern = "pull/.+"
         versionFormat = '${branch}-SNAPSHOT'
     }
     tag {
-        pattern = 'v(?<tagVersion>[0-9].*)'
+        pattern = "v(?<tagVersion>[0-9].*)"
         versionFormat = '${tagVersion}'
     }
     tag {
-        pattern = 'release/(?<tagVersion>[0-9].*)'
+        pattern = "release/(?<tagVersion>[0-9].*)"
         versionFormat = '${tagVersion}'
     }
     commit {
@@ -39,32 +41,45 @@ gitVersioning.apply {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(16)
+        languageVersion = javaVersion
     }
     withJavadocJar()
     withSourcesJar()
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = javaVersion
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = javaVersion
+    }
 }
 
 repositories {
     maven {
         url "https://maven.modded-mc.com/repository/maven-public/"
     }
+    mavenCentral()
 }
 
 dependencies {
-    api group: 'org.joml', name: 'joml', version: '1.10.1'
-    api group: 'org.jetbrains', name: 'annotations', version: '20.1.0'
-    api group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-    api group: 'com.mojang', name: 'datafixerupper', version: '1.0.20'
-    api group: 'com.mojang', name: 'brigadier', version: '1.0.17'
-    api group: 'com.google.inject', name: 'guice', version: '5.0.1'
+    api group: "org.joml", name: "joml", version: "1.10.1"
+    api group: "org.jetbrains", name: "annotations", version: "20.1.0"
+    api group: "com.google.code.findbugs", name: "jsr305", version: "3.0.2"
+    api group: "com.mojang", name: "datafixerupper", version: "1.0.20"
+    api group: "com.mojang", name: "brigadier", version: "1.0.17"
+    api group: "com.google.inject", name: "guice", version: "5.0.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId 'org.sandboxpowered.api'
-            artifactId 'api'
+            groupId "org.sandboxpowered.api"
+            artifactId "api"
             version project.version
 
             from components.java
