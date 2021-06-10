@@ -1,6 +1,7 @@
 package org.sandboxpowered.api.enchantment;
 
 import org.jetbrains.annotations.Range;
+import org.sandboxpowered.api.fluid.Fluid;
 import org.sandboxpowered.api.item.ItemStack;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
@@ -8,6 +9,11 @@ import org.sandboxpowered.api.registry.RegistryFactory;
 
 public interface Enchantment extends RegistryEntry<Enchantment> {
     Registry<Enchantment> REGISTRY = RegistryFactory.getRegistry(Enchantment.class);
+
+    static Enchantment create(Rarity rarity) {
+        return new AbstractEnchantment(rarity) {
+        };
+    }
 
     ItemStack getEnchantedBook();
 
@@ -39,6 +45,11 @@ public interface Enchantment extends RegistryEntry<Enchantment> {
     boolean isTreasure();
 
     Rarity getRarity();
+
+    @Override
+    default Registry<Enchantment> getRegistry() {
+        return REGISTRY;
+    }
 
     enum Rarity {
         COMMON(10),
