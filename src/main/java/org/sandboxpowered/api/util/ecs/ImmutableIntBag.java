@@ -15,11 +15,9 @@ public interface ImmutableIntBag extends IntIterable {
      * Returns the element at the specified position in Bag.
      *
      * @param index index of the element to return
-     *
      * @return the element at the specified position in bag
-     *
      * @throws ArrayIndexOutOfBoundsException if the index is out of range
-     *         ({@code index < 0 || index >= size()})
+     *                                        ({@code index < 0 || index >= size()})
      */
     int get(int index);
 
@@ -48,7 +46,6 @@ public interface ImmutableIntBag extends IntIterable {
      * Checks if the internal storage supports this index.
      *
      * @param index index to check
-     *
      * @return {@code true} if the index is within bounds
      */
     boolean isIndexWithinBounds(int index);

@@ -9,7 +9,7 @@ public interface EntitySystem {
 
     /**
      * Process system.
-     *
+     * <p>
      * Does nothing if the system is disabled.
      */
     void process();

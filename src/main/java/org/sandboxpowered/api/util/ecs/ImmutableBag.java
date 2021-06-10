@@ -7,7 +7,6 @@ package org.sandboxpowered.api.util.ecs;
  * </p>
  *
  * @param <E> object type this bag holds
- *
  * @see Bag
  */
 public interface ImmutableBag<E> extends Iterable<E> {
@@ -15,11 +14,9 @@ public interface ImmutableBag<E> extends Iterable<E> {
      * Returns the element at the specified position in Bag.
      *
      * @param index index of the element to return
-     *
      * @return the element at the specified position in bag
-     *
      * @throws ArrayIndexOutOfBoundsException if the index is out of range
-     *         ({@code index < 0 || index >= size()})
+     *                                        ({@code index < 0 || index >= size()})
      */
     E get(int index);
 
@@ -48,7 +45,6 @@ public interface ImmutableBag<E> extends Iterable<E> {
      * Checks if the internal storage supports this index.
      *
      * @param index index to check
-     *
      * @return {@code true} if the index is within bounds
      */
     boolean isIndexWithinBounds(int index);

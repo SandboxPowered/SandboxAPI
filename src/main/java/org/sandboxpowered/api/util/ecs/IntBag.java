@@ -16,9 +16,7 @@ public interface IntBag extends ImmutableIntBag {
      * </p>
      *
      * @param index the index of element to be removed
-     *
      * @return element that was removed from the Bag
-     *
      * @throws ArrayIndexOutOfBoundsException if the index is out of range ({@code index < 0 || index >= size()})
      */
     int remove(int index);
@@ -44,7 +42,6 @@ public interface IntBag extends ImmutableIntBag {
      * </p>
      *
      * @param element element to be removed from this list, if present
-     *
      * @return {@code true} if this list contained the specified element
      */
     boolean removeValue(int element);
@@ -54,7 +51,6 @@ public interface IntBag extends ImmutableIntBag {
      * specified Bag.
      *
      * @param bag Bag containing elements to be removed from this Bag
-     *
      * @return {@code true} if this Bag changed as a result of the call
      */
     boolean removeAll(ImmutableIntBag bag);
@@ -79,7 +75,7 @@ public interface IntBag extends ImmutableIntBag {
     /**
      * Set element at specified index in the bag.
      *
-     * @param index position of element
+     * @param index   position of element
      * @param element the element
      */
     void set(int index, int element);

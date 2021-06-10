@@ -14,7 +14,8 @@ public interface Item extends RegistryEntry<Item> {
     Registry<Item> REGISTRY = RegistryFactory.getRegistry(Item.class);
 
     static Item create(Properties properties) {
-        return new AbstractItem(properties) {};
+        return new AbstractItem(properties) {
+        };
     }
 
     Properties getProperties();
@@ -59,9 +60,11 @@ public interface Item extends RegistryEntry<Item> {
             Builder setDefaultDurability(int damage);
 
             Builder addToolLevel(ToolType type, int level);
+
             Builder addToolTypes(ToolType type, ToolMaterial material);
 
             Builder addToolLevels(int level, ToolType... types);
+
             Builder addToolTypes(ToolMaterial material, ToolType... types);
 
             Properties build();

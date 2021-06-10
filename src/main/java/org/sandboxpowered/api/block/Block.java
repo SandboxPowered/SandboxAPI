@@ -1,6 +1,5 @@
 package org.sandboxpowered.api.block;
 
-import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.item.ItemProvider;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
