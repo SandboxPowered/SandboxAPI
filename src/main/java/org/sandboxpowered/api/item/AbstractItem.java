@@ -19,7 +19,7 @@ public abstract class AbstractItem implements Item {
 
     @Override
     public boolean shouldRenderStackCount(ItemStack stack) {
-        return true;
+        return stack.getCount() > 1;
     }
 
     @Override
