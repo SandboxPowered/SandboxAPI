@@ -1,5 +1,6 @@
 package org.sandboxpowered.api.item;
 
+import org.jetbrains.annotations.NotNull;
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.entity.Entity;
 import org.sandboxpowered.api.item.tool.ToolMaterial;
@@ -12,12 +13,18 @@ import org.sandboxpowered.api.world.state.BlockState;
 
 import java.util.Set;
 
-public interface Item extends RegistryEntry<Item> {
+public interface Item extends RegistryEntry<Item>, ItemProvider {
     Registry<Item> REGISTRY = RegistryFactory.getRegistry(Item.class);
 
     static Item create(Properties properties) {
         return new AbstractItem(properties) {
         };
+    }
+
+    @Override
+    @NotNull
+    default Item asItem() {
+        return this;
     }
 
     Properties getProperties();

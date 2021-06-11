@@ -1,5 +1,7 @@
 package org.sandboxpowered.api.extensions
 
+import org.sandboxpowered.api.addon.SandboxAPI
+import org.sandboxpowered.api.addon.service.CreationService
 import org.sandboxpowered.api.engine.Game
 import org.sandboxpowered.api.engine.Platform
 import org.sandboxpowered.api.entity.Component
@@ -10,6 +12,7 @@ import org.sandboxpowered.api.registry.DeferredRegistrar
 import org.sandboxpowered.api.registry.RegistryEntry
 import org.sandboxpowered.api.registry.RegistryObject
 import org.sandboxpowered.api.util.Identifier
+import java.util.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 
@@ -44,4 +47,16 @@ private value class RegistryObjectSafeDelegate<T : RegistryEntry<T>>(val registr
 
     override fun getValue(thisRef: Any?, property: KProperty<*>) =
         if (registryObject.isPresent) registryObject.get() else null
+}
+
+@JvmSynthetic
+inline fun <reified S : CreationService> SandboxAPI.getCreationService(): Optional<S> {
+    return getCreationService(S::class.java)
+}
+
+@JvmSynthetic
+inline fun <reified S : CreationService> SandboxAPI.useCreationService(noinline block: (S) -> Unit) {
+    getCreationService(S::class.java).ifPresent {
+        block(it)
+    }
 }
