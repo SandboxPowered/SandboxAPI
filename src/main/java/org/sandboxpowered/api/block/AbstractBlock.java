@@ -1,23 +1,23 @@
 package org.sandboxpowered.api.block;
 
+import org.jetbrains.annotations.Nullable;
 import org.sandboxpowered.api.item.Item;
 import org.sandboxpowered.api.registry.RegistryObject;
 
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public abstract class AbstractBlock implements Block {
-    private final AtomicBoolean hasItemCache = new AtomicBoolean();
-    private volatile Item cachedItem;
+    private final AtomicReference<Item> cachedItem = new AtomicReference<>();
 
     @Override
+    @Nullable
     public Item asItem() {
-        if (!hasItemCache.get()) {
-            synchronized (this) {
+        synchronized (cachedItem) {
+            if (cachedItem.get() == null) {
                 final RegistryObject<Item> item = Item.REGISTRY.get(getIdentifier());
-                if (item.isPresent()) cachedItem = item.get();
+                if (item.isPresent()) cachedItem.set(cachedItem.get());
             }
-            hasItemCache.set(true);
+            return cachedItem.get();
         }
-        return cachedItem;
     }
 }

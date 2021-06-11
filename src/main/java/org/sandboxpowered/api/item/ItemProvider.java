@@ -1,9 +1,11 @@
 package org.sandboxpowered.api.item;
 
 import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.Nullable;
 
 public interface ItemProvider {
     @Contract(pure = true)
+    @Nullable
     Item asItem();
 
     default ItemStack createStack() {
