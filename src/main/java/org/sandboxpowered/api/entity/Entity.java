@@ -10,6 +10,5 @@ public interface Entity {
 
     boolean hasComponent(Class<? extends Component> type);
 
-    @Nullable
-    <T extends Component> T getComponent(Class<T> type);
+    @Nullable <T extends Component> T getComponent(Class<T> type);
 }

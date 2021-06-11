@@ -5,13 +5,7 @@ import org.sandboxpowered.api.addon.Addon;
 import org.sandboxpowered.api.addon.SandboxAPI;
 import org.sandboxpowered.api.block.Block;
 import org.sandboxpowered.api.engine.Platform;
-import org.sandboxpowered.api.entity.Entity;
-import org.sandboxpowered.api.entity.InventoryComponent;
-import org.sandboxpowered.api.entity.PositionComponent;
-import org.sandboxpowered.api.item.*;
-import org.sandboxpowered.api.network.Packet;
-import org.sandboxpowered.api.network.PacketBuffer;
-import org.sandboxpowered.api.world.World;
+import org.sandboxpowered.api.item.Item;
 
 public class ExampleAddon implements Addon {
     @Override
