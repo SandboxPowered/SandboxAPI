@@ -27,8 +27,8 @@ fun <T : RegistryEntry<T>> DeferredRegistrar<T>.registerNullable(
     supplier: () -> T
 ): ReadOnlyProperty<Any?, T?> = RegistryObjectSafeDelegate(register(id, supplier))
 
-fun <T : Packet> Game.registerPacket(type: KClass<T>, reader: (buffer: PacketBuffer) -> T, side: Platform.Type) =
-    registerPacket(type.java, reader, side)
+inline fun <reified T : Packet> Game.registerPacket(side: Platform.Type, noinline reader: (buffer: PacketBuffer) -> T) =
+    registerPacket(T::class.java, reader, side)
 
 @JvmInline
 private value class RegistryObjectSafeDelegate<T : RegistryEntry<T>>(val registryObject: RegistryObject<T>) :
