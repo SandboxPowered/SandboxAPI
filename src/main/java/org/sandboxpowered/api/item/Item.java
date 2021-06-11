@@ -10,7 +10,6 @@ import org.sandboxpowered.api.registry.RegistryFactory;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 
-import java.util.Properties;
 import java.util.Set;
 
 public interface Item extends RegistryEntry<Item> {
@@ -39,7 +38,7 @@ public interface Item extends RegistryEntry<Item> {
 
     /**
      * @param world The world in which the entity using the item exists
-     * @param user The entity using the item, has {@link org.sandboxpowered.api.entity.InventoryComponent}
+     * @param user  The entity using the item, has {@link org.sandboxpowered.api.entity.InventoryComponent}
      */
     UsageResult<ItemStack> use(World world, Entity user, Hand hand);
 

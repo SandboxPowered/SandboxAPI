@@ -1,7 +1,6 @@
 package org.sandboxpowered.api.enchantment;
 
 import org.jetbrains.annotations.Range;
-import org.sandboxpowered.api.fluid.Fluid;
 import org.sandboxpowered.api.item.ItemStack;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
