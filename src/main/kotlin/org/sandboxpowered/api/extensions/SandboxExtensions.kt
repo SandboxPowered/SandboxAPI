@@ -11,7 +11,6 @@ import org.sandboxpowered.api.registry.RegistryEntry
 import org.sandboxpowered.api.registry.RegistryObject
 import org.sandboxpowered.api.util.Identifier
 import kotlin.properties.ReadOnlyProperty
-import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
 @JvmSynthetic
@@ -29,10 +28,14 @@ fun <T : RegistryEntry<T>> DeferredRegistrar<T>.registerNullable(
     supplier: () -> T
 ): ReadOnlyProperty<Any?, T?> = RegistryObjectSafeDelegate(register(id, supplier))
 
+@JvmSynthetic
 inline fun <reified T : Packet> Game.registerPacket(side: Platform.Type, noinline reader: (buffer: PacketBuffer) -> T) =
     registerPacket(T::class.java, reader, side)
 
+@JvmSynthetic
 inline fun <reified C : Component> Entity.hasComponent(): Boolean = hasComponent(C::class.java)
+
+@JvmSynthetic
 inline fun <reified C : Component> Entity.getComponent(): C? = getComponent(C::class.java)
 
 @JvmInline
