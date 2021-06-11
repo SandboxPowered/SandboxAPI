@@ -4,6 +4,8 @@ import org.sandboxpowered.api.Sandbox
 import org.sandboxpowered.api.addon.SandboxAPI
 import org.sandboxpowered.api.block.Block
 import org.sandboxpowered.api.engine.Platform
+import org.sandboxpowered.api.extensions.getValue
+import org.sandboxpowered.api.extensions.registerNullable
 import org.sandboxpowered.api.extensions.registerPacket
 import org.sandboxpowered.api.item.Item
 import org.sandboxpowered.example.ExamplePacket

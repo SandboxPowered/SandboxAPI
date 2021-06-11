@@ -2,6 +2,8 @@ package org.sandboxpowered.api.extensions
 
 import org.sandboxpowered.api.engine.Game
 import org.sandboxpowered.api.engine.Platform
+import org.sandboxpowered.api.entity.Component
+import org.sandboxpowered.api.entity.Entity
 import org.sandboxpowered.api.network.Packet
 import org.sandboxpowered.api.network.PacketBuffer
 import org.sandboxpowered.api.registry.DeferredRegistrar
@@ -29,6 +31,9 @@ fun <T : RegistryEntry<T>> DeferredRegistrar<T>.registerNullable(
 
 inline fun <reified T : Packet> Game.registerPacket(side: Platform.Type, noinline reader: (buffer: PacketBuffer) -> T) =
     registerPacket(T::class.java, reader, side)
+
+inline fun <reified C : Component> Entity.hasComponent(): Boolean = hasComponent(C::class.java)
+inline fun <reified C : Component> Entity.getComponent(): C? = getComponent(C::class.java)
 
 @JvmInline
 private value class RegistryObjectSafeDelegate<T : RegistryEntry<T>>(val registryObject: RegistryObject<T>) :
