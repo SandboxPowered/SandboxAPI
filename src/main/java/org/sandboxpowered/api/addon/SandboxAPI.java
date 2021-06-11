@@ -1,5 +1,6 @@
 package org.sandboxpowered.api.addon;
 
+import org.sandboxpowered.api.addon.service.CreationService;
 import org.sandboxpowered.api.registry.DeferredRegistrar;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
