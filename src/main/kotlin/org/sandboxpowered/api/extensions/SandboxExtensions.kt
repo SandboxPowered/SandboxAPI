@@ -1,10 +1,15 @@
 package org.sandboxpowered.api.extensions
 
+import org.sandboxpowered.api.engine.Game
+import org.sandboxpowered.api.engine.Platform
+import org.sandboxpowered.api.network.Packet
+import org.sandboxpowered.api.network.PacketBuffer
 import org.sandboxpowered.api.registry.DeferredRegistrar
 import org.sandboxpowered.api.registry.RegistryEntry
 import org.sandboxpowered.api.registry.RegistryObject
 import org.sandboxpowered.api.util.Identifier
 import kotlin.properties.ReadOnlyProperty
+import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
 
 @JvmSynthetic
@@ -22,7 +27,11 @@ fun <T : RegistryEntry<T>> DeferredRegistrar<T>.registerNullable(
     supplier: () -> T
 ): ReadOnlyProperty<Any?, T?> = RegistryObjectSafeDelegate(register(id, supplier))
 
-private class RegistryObjectSafeDelegate<T : RegistryEntry<T>>(val registryObject: RegistryObject<T>) :
+fun <T : Packet> Game.registerPacket(type: KClass<T>, reader: (buffer: PacketBuffer) -> T, side: Platform.Type) =
+    registerPacket(type.java, reader, side)
+
+@JvmInline
+private value class RegistryObjectSafeDelegate<T : RegistryEntry<T>>(val registryObject: RegistryObject<T>) :
     ReadOnlyProperty<Any?, T?> {
 
     override fun getValue(thisRef: Any?, property: KProperty<*>) =
