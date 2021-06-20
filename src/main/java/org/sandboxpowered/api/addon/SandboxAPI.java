@@ -9,6 +9,8 @@ import java.util.Optional;
 import java.util.function.Consumer;
 
 public interface SandboxAPI {
+    Log getLog();
+
     <T extends RegistryEntry<T>> DeferredRegistrar<T> getRegistrar(Registry<T> registry);
 
     <T extends CreationService> Optional<T> getCreationService(Class<T> tClass);
