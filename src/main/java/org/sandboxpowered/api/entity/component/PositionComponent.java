@@ -1,4 +1,4 @@
-package org.sandboxpowered.api.entity;
+package org.sandboxpowered.api.entity.component;
 
 import org.joml.Vector3f;
 import org.joml.Vector3fc;

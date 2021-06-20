@@ -3,6 +3,7 @@ package org.sandboxpowered.api.item;
 import org.jetbrains.annotations.NotNull;
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.entity.Entity;
+import org.sandboxpowered.api.entity.component.InventoryComponent;
 import org.sandboxpowered.api.item.tool.ToolMaterial;
 import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.Registry;
@@ -45,7 +46,7 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
 
     /**
      * @param world The world in which the entity using the item exists
-     * @param user  The entity using the item, has {@link org.sandboxpowered.api.entity.InventoryComponent}
+     * @param user  The entity using the item, has {@link InventoryComponent}
      */
     UsageResult<ItemStack> use(World world, Entity user, Hand hand);
 

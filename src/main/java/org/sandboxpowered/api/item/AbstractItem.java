@@ -1,7 +1,7 @@
 package org.sandboxpowered.api.item;
 
 import org.sandboxpowered.api.entity.Entity;
-import org.sandboxpowered.api.entity.InventoryComponent;
+import org.sandboxpowered.api.entity.component.InventoryComponent;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 

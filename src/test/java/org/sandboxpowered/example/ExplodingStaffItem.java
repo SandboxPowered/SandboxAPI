@@ -1,8 +1,8 @@
 package org.sandboxpowered.example;
 
 import org.sandboxpowered.api.entity.Entity;
-import org.sandboxpowered.api.entity.InventoryComponent;
-import org.sandboxpowered.api.entity.PositionComponent;
+import org.sandboxpowered.api.entity.component.InventoryComponent;
+import org.sandboxpowered.api.entity.component.PositionComponent;
 import org.sandboxpowered.api.item.*;
 import org.sandboxpowered.api.world.World;
 
