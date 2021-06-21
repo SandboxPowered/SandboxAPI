@@ -1,7 +1,11 @@
 package org.sandboxpowered.api.addon.service.resource;
 
+import org.sandboxpowered.api.block.AbstractBlock;
+import org.sandboxpowered.api.block.Block;
+import org.sandboxpowered.api.block.Materials;
 import org.sandboxpowered.api.item.Item;
 import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.RegistryEntry;
 
 import java.util.function.Function;
@@ -36,9 +40,9 @@ public final class ResourceConstants {
     public static final ResourceType<Item> NUGGET = item("nugget");
     public static final ResourceType<Item> GEM = item("gem");
     public static final ResourceType<Item> SCRAP = item("scrap");
-//    public static final ResourceType<Block> NETHER_ORE = ResourceType.of("nether_ore", m -> Block.create(Block.Properties.builder(Material.STONE).setStrength(3).requiresCorrectToolForDrops().setHarvestTool(ToolType.PICKAXE).setHarvestLevel(1).build()), ItemStack::of);
-//    public static final ResourceType<Block> ORE = ResourceType.of("ore", m -> Block.create(Block.Properties.builder(Materials.STONE).setStrength(3).requiresCorrectToolForDrops().setHarvestTool(ToolType.PICKAXE).setHarvestLevel(1).build()), ItemStack::of);
-//    public static final ResourceType<Block> BLOCK = ResourceType.of("block", m -> Block.create(Block.Properties.builder(Materials.METAL).requiresCorrectToolForDrops().setStrength(5.0F, 6.0F).build()), ItemStack::of);
+    public static final ResourceType<Block> NETHER_ORE = new ResourceType<>("nether_ore", m -> new AbstractBlock(Block.Properties.builder(Materials.STONE).setStrength(3).requiresCorrectToolForDrops().setHarvestTool(ToolType.PICKAXE).setHarvestLevel(1).build()), ItemStack::of);
+    public static final ResourceType<Block> ORE = new ResourceType<>("ore", m -> new AbstractBlock(Block.Properties.builder(Materials.STONE).setStrength(3).requiresCorrectToolForDrops().setHarvestTool(ToolType.PICKAXE).setHarvestLevel(1).build()), ItemStack::of);
+    public static final ResourceType<Block> BLOCK = new ResourceType<>("block", m -> new AbstractBlock(Block.Properties.builder(Materials.METAL).requiresCorrectToolForDrops().setStrength(5.0F, 6.0F).build()), ItemStack::of);
 
     // Common Modded Constants
 

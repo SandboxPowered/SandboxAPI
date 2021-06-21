@@ -8,11 +8,19 @@ import org.sandboxpowered.api.util.QuantumReference;
 import org.sandboxpowered.api.world.state.BlockState;
 import org.sandboxpowered.api.world.state.StateProvider;
 
-import java.util.concurrent.atomic.AtomicReference;
-
-public abstract class AbstractBlock implements Block {
+public class AbstractBlock implements Block {
     private final QuantumReference<Item> cachedItem = new QuantumReference<>();
     private final StateProvider<Block, BlockState> stateProvider = Sandbox.getFactoryProvider().provide(StateProvider.StateFactory.class).create(this);
+    private final Properties properties;
+
+    public AbstractBlock(Properties properties) {
+        this.properties = properties;
+    }
+
+    @Override
+    public Properties getProperties() {
+        return properties;
+    }
 
     @Override
     public StateProvider<Block, BlockState> getStateProvider() {
@@ -22,12 +30,12 @@ public abstract class AbstractBlock implements Block {
     @Override
     @Nullable
     public Item asItem() {
-        synchronized (cachedItem) {
-            if (!cachedItem.isStored()) {
+        if (!cachedItem.isStored()) {
+            synchronized (cachedItem) {
                 final RegistryObject<Item> item = Item.REGISTRY.get(getIdentifier());
                 if (item.isPresent()) cachedItem.store(item.get());
             }
-            return cachedItem.get();
         }
+        return cachedItem.get();
     }
 }
