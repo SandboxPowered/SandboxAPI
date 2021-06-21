@@ -32,10 +32,15 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
 
         interface Builder {
             Builder setStrength(float hardness, float resistance);
+
             Builder setStrength(int strength);
+
             Builder setHarvestTool(ToolType type);
+
             Builder setHarvestLevel(int level);
+
             Builder requiresCorrectToolForDrops();
+
             Properties build();
         }
 

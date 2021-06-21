@@ -14,7 +14,7 @@ public final class ResourceConstants {
 
     private static final Function<ResourceMaterial, Item> ITEM_CREATOR = material -> Item.create(Item.Properties.builder().build());
 
-    // Vanilla Materials
+    /* Vanilla Materials */
 
     public static final ResourceMaterial WOOD = material("wood");
     public static final ResourceMaterial STONE = material("stone");
@@ -33,7 +33,7 @@ public final class ResourceConstants {
     public static final ResourceMaterial GLOWSTONE = material("glowstone");
     public static final ResourceMaterial NETHERITE = material("netherite");
 
-    // Vanilla Types
+    /* Vanilla Types */
 
     public static final ResourceType<Item> INGOT = item("ingot");
     public static final ResourceType<Item> DUST = item("dust");
@@ -44,7 +44,7 @@ public final class ResourceConstants {
     public static final ResourceType<Block> ORE = new ResourceType<>("ore", m -> new AbstractBlock(Block.Properties.builder(Materials.STONE).setStrength(3).requiresCorrectToolForDrops().setHarvestTool(ToolType.PICKAXE).setHarvestLevel(1).build()), ItemStack::of);
     public static final ResourceType<Block> BLOCK = new ResourceType<>("block", m -> new AbstractBlock(Block.Properties.builder(Materials.METAL).requiresCorrectToolForDrops().setStrength(5.0F, 6.0F).build()), ItemStack::of);
 
-    // Common Modded Constants
+    /* Common Modded Constants */
 
     public static final ResourceMaterial TIN = material("tin");
     public static final ResourceMaterial SILVER = material("silver");

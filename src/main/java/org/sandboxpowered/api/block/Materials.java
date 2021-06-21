@@ -4,9 +4,6 @@ import org.sandboxpowered.api.Sandbox;
 
 @SuppressWarnings("unused")
 public final class Materials {
-    private Materials() {
-    }
-
     public static final Material AIR = of("air");
     /**
      * Structure void block.
@@ -85,11 +82,11 @@ public final class Materials {
      */
     public static final Material GLASS = of("glass");
     /**
-     * Ice that can melt. See {@link #DENSE_ICE} for unmeltable ice.
+     * Ice blocks that can melt. See {@link #DENSE_ICE} for unmeltable ice.
      */
     public static final Material ICE = of("ice");
     /**
-     * Ice blocks that do not melt. See {@link #ICE} for meltable ice.
+     * Ice blocks that do <b>not</b> melt. See {@link #ICE} for meltable ice.
      */
     public static final Material DENSE_ICE = of("dense_ice");
     public static final Material CACTUS = of("cactus");
@@ -129,6 +126,9 @@ public final class Materials {
     public static final Material FOOD = of("food");
     public static final Material AMETHYST = of("amethyst");
     public static final Material POWDER_SNOW = of("powder_snow");
+
+    private Materials() {
+    }
 
     private static Material of(String material) {
         return Sandbox.getFactoryProvider().provide(Material.MaterialFactory.class).fromVanilla(material);

@@ -9,7 +9,8 @@ import java.util.TreeMap;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
-public record ResourceType<C extends RegistryEntry<C>>(String id, Function<ResourceMaterial, C> defaultCreator, Function<C, ItemStack> stackFunction) {
+public record ResourceType<C extends RegistryEntry<C>>(String id, Function<ResourceMaterial, C> defaultCreator,
+                                                       Function<C, ItemStack> stackFunction) {
     private static final Pattern VALID_NAME = Pattern.compile("[^a-z_]");
     private static final Map<String, ResourceType<?>> TYPES = new TreeMap<>();
 

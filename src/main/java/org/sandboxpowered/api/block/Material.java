@@ -16,6 +16,14 @@ public interface Material {
 
     PistonBehavior getPistonBehavior();
 
+    enum PistonBehavior {
+        NORMAL,
+        DESTROY,
+        BLOCK,
+        IGNORE,
+        PUSH_ONLY
+    }
+
     interface Builder {
         Builder liquid();
 
@@ -36,13 +44,5 @@ public interface Material {
 
     interface MaterialFactory {
         Material fromVanilla(String material);
-    }
-
-    enum PistonBehavior {
-        NORMAL,
-        DESTROY,
-        BLOCK,
-        IGNORE,
-        PUSH_ONLY
     }
 }
