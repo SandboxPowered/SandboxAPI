@@ -6,6 +6,7 @@ import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
 import org.sandboxpowered.api.world.state.BlockState;
+import org.sandboxpowered.api.world.state.StateProvider;
 
 public interface Block extends RegistryEntry<Block>, ItemProvider {
     Registry<Block> REGISTRY = RegistryFactory.getRegistry(Block.class);
@@ -16,8 +17,10 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
     }
 
     default BlockState getDefaultState() {
-        return Sandbox.getFactoryProvider().provide(StateFactory.class).getDefaultState(this);
+        return getStateProvider().getBaseState();
     }
+
+    StateProvider<Block, BlockState> getStateProvider();
 
     @Override
     default Registry<Block> getRegistry() {
@@ -36,9 +39,5 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
         interface PropertiesFactory {
             Properties.Builder createBuilder(Material material);
         }
-    }
-
-    interface StateFactory {
-        BlockState getDefaultState(Block block);
     }
 }
