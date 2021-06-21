@@ -1,11 +1,11 @@
 package org.sandboxpowered.api.world;
 
-import org.joml.Vector3ic;
+import org.sandboxpowered.api.util.math.Position;
 import org.sandboxpowered.api.world.state.BlockState;
 import org.sandboxpowered.api.world.state.FluidState;
 
 public interface WorldReader {
-    BlockState getBlockState(Vector3ic pos);
+    BlockState getBlockState(Position pos);
 
-    FluidState getFluidState(Vector3ic pos);
+    FluidState getFluidState(Position pos);
 }

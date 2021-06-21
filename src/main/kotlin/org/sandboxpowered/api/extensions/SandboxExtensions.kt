@@ -4,14 +4,15 @@ import org.sandboxpowered.api.addon.SandboxAPI
 import org.sandboxpowered.api.addon.service.CreationService
 import org.sandboxpowered.api.engine.Game
 import org.sandboxpowered.api.engine.Platform
-import org.sandboxpowered.api.entity.component.Component
 import org.sandboxpowered.api.entity.Entity
+import org.sandboxpowered.api.entity.component.Component
 import org.sandboxpowered.api.network.Packet
 import org.sandboxpowered.api.network.PacketBuffer
 import org.sandboxpowered.api.registry.DeferredRegistrar
 import org.sandboxpowered.api.registry.RegistryEntry
 import org.sandboxpowered.api.registry.RegistryObject
 import org.sandboxpowered.api.util.Identifier
+import org.sandboxpowered.api.util.math.Position
 import java.util.*
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
@@ -59,4 +60,44 @@ inline fun <reified S : CreationService> SandboxAPI.useCreationService(noinline 
     getCreationService(S::class.java).ifPresent {
         block(it)
     }
+}
+
+@JvmSynthetic
+operator fun Position.plus(pos: Position): Position {
+    return toImmutable().add(pos)
+}
+
+@JvmSynthetic
+operator fun Position.plus(int: Int): Position {
+    return toImmutable().add(int, int, int)
+}
+
+@JvmSynthetic
+operator fun Position.inc(): Position {
+    return this + 1
+}
+
+@JvmSynthetic
+operator fun Position.dec(): Position {
+    return this - 1
+}
+
+@JvmSynthetic
+operator fun Position.minus(pos: Position): Position {
+    return toImmutable().sub(pos)
+}
+
+@JvmSynthetic
+operator fun Position.minus(int: Int): Position {
+    return toImmutable().sub(int, int, int)
+}
+
+@JvmSynthetic
+operator fun Position.unaryPlus(): Position {
+    return Position.immutable(+x, +y, +z)
+}
+
+@JvmSynthetic
+operator fun Position.unaryMinus(): Position {
+    return Position.immutable(-x, -y, -z)
 }
