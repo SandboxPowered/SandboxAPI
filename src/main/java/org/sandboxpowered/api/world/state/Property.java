@@ -6,7 +6,7 @@ import java.util.Optional;
 public interface Property<T extends Comparable<T>> {
     String getPropertyName();
 
-    String getValueString(String string);
+    String getValueString(T value);
 
     Collection<T> getValues();
 
