@@ -1,6 +1,6 @@
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-package org.sandboxpowered.api.world.state;
+package org.sandboxpowered.api.network;
 
 import org.sandboxpowered.api.util.MethodsReturnNonnullByDefault;
 
