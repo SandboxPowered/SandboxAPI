@@ -160,6 +160,10 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
     }
 
     interface Properties {
+        static Properties.Builder builder(Material material) {
+            return Sandbox.getFactoryProvider().provide(Properties.PropertiesFactory.class).createBuilder(material);
+        }
+
         Material getMaterial();
 
         ToolType getToolType();
@@ -171,10 +175,6 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
         float getHardness();
 
         float getResistance();
-
-        static Properties.Builder builder(Material material) {
-            return Sandbox.getFactoryProvider().provide(Properties.PropertiesFactory.class).createBuilder(material);
-        }
 
         interface Builder {
             Builder setStrength(float hardness, float resistance);

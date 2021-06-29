@@ -4,7 +4,6 @@ import org.sandboxpowered.api.entity.Entity;
 import org.sandboxpowered.api.entity.component.InventoryComponent;
 import org.sandboxpowered.api.util.TypedActionResult;
 import org.sandboxpowered.api.world.World;
-import org.sandboxpowered.api.world.state.BlockState;
 
 public abstract class AbstractItem implements Item {
     private final Properties properties;
@@ -19,32 +18,7 @@ public abstract class AbstractItem implements Item {
     }
 
     @Override
-    public boolean shouldRenderStackCount(ItemStack stack) {
-        return stack.getCount() > 1;
-    }
-
-    @Override
-    public boolean showEnchantmentGlint(ItemStack stack) {
-        return stack.getEnchantments().length != 0;
-    }
-
-    @Override
-    public float getMiningSpeed(ItemStack stack, BlockState state) {
-        return 0;
-    }
-
-    @Override
-    public boolean isEffectiveOn(ItemStack stack, BlockState state) {
-        return false;
-    }
-
-    @Override
-    public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
-        return false;
-    }
-
-    @Override
-    public TypedActionResult<ItemStack> use(World world, Entity user, Hand hand) {
-        return TypedActionResult.pass(user.getComponent(InventoryComponent.class).get(hand));
+    public TypedActionResult<ItemStack> use(World world, ItemStack stack, Entity user, Hand hand) {
+        return TypedActionResult.pass(stack);
     }
 }

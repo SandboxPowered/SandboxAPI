@@ -1,14 +1,18 @@
 package org.sandboxpowered.api.item;
 
+import com.google.common.collect.ImmutableMultimap;
+import com.google.common.collect.Multimap;
 import org.jetbrains.annotations.NotNull;
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.entity.Entity;
 import org.sandboxpowered.api.entity.component.InventoryComponent;
+import org.sandboxpowered.api.item.attribute.Attribute;
 import org.sandboxpowered.api.item.tool.ToolMaterial;
 import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
+import org.sandboxpowered.api.util.EquipmentSlot;
 import org.sandboxpowered.api.util.TypedActionResult;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
@@ -35,21 +39,35 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
         return ItemStack.empty();
     }
 
-    boolean shouldRenderStackCount(ItemStack stack);
+    default boolean shouldRenderStackCount(ItemStack stack) {
+        return stack.getCount() > 1;
+    }
 
-    boolean showEnchantmentGlint(ItemStack stack);
+    default boolean showEnchantmentGlint(ItemStack stack) {
+        return stack.isEnchanted();
+    }
 
-    float getMiningSpeed(ItemStack stack, BlockState state);
+    default float getMiningSpeed(ItemStack stack, BlockState state) {
+        return 1;
+    }
 
-    boolean isEffectiveOn(ItemStack stack, BlockState state);
+    default boolean isEffectiveOn(ItemStack stack, BlockState state) {
+        return false;
+    }
 
-    boolean isCorrectToolForDrops(ItemStack stack, BlockState state);
+    default boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
+        return false;
+    }
+
+    default Multimap<Attribute, Attribute.Modifier> getAttributeModifiers(EquipmentSlot slot) {
+        return ImmutableMultimap.of();
+    }
 
     /**
      * @param world The world in which the entity using the item exists
      * @param user  The entity using the item, has {@link InventoryComponent}
      */
-    TypedActionResult<ItemStack> use(World world, Entity user, Hand hand);
+    TypedActionResult<ItemStack> use(World world, ItemStack stack, Entity user, Hand hand);
 
     @Override
     default Registry<Item> getRegistry() {

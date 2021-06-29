@@ -35,6 +35,8 @@ public interface ItemStack {
 
     int getMaxDamage();
 
+    boolean isEnchanted();
+
     interface ItemStackFactory {
         ItemStack empty();
 
