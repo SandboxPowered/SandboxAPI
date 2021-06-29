@@ -9,6 +9,7 @@ import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
+import org.sandboxpowered.api.util.TypedActionResult;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 
@@ -48,7 +49,7 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
      * @param world The world in which the entity using the item exists
      * @param user  The entity using the item, has {@link InventoryComponent}
      */
-    UsageResult<ItemStack> use(World world, Entity user, Hand hand);
+    TypedActionResult<ItemStack> use(World world, Entity user, Hand hand);
 
     @Override
     default Registry<Item> getRegistry() {

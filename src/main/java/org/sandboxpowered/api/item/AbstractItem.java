@@ -2,6 +2,7 @@ package org.sandboxpowered.api.item;
 
 import org.sandboxpowered.api.entity.Entity;
 import org.sandboxpowered.api.entity.component.InventoryComponent;
+import org.sandboxpowered.api.util.TypedActionResult;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 
@@ -43,7 +44,7 @@ public abstract class AbstractItem implements Item {
     }
 
     @Override
-    public UsageResult<ItemStack> use(World world, Entity user, Hand hand) {
-        return UsageResult.pass(user.getComponent(InventoryComponent.class).get(hand));
+    public TypedActionResult<ItemStack> use(World world, Entity user, Hand hand) {
+        return TypedActionResult.pass(user.getComponent(InventoryComponent.class).get(hand));
     }
 }

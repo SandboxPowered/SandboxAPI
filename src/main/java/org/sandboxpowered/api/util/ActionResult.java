@@ -1,8 +1,8 @@
 package org.sandboxpowered.api.util;
 
-public enum InteractionResult {
+public enum ActionResult {
     SUCCESS,
     CONSUME,
-    IGNORE,
-    FAILURE
+    PASS,
+    FAIL
 }

@@ -12,8 +12,8 @@ import org.sandboxpowered.api.item.tool.ToolType;
 import org.sandboxpowered.api.registry.Registry;
 import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
+import org.sandboxpowered.api.util.ActionResult;
 import org.sandboxpowered.api.util.Direction;
-import org.sandboxpowered.api.util.InteractionResult;
 import org.sandboxpowered.api.util.Mirror;
 import org.sandboxpowered.api.util.Rotation;
 import org.sandboxpowered.api.util.math.Position;
@@ -129,19 +129,19 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
     /**
      * Gets called when the block is interacted with by a {@link Entity}
      *
-     * @return The {@link InteractionResult} of the interaction
+     * @return The {@link ActionResult} of the interaction
      */
-    default InteractionResult onBlockUsed(World world, Position pos, BlockState state, Entity entity, Hand hand, Direction side, Vector3fc hit) {
-        return InteractionResult.IGNORE;
+    default ActionResult onBlockUsed(World world, Position pos, BlockState state, Entity entity, Hand hand, Direction side, Vector3fc hit) {
+        return ActionResult.PASS;
     }
 
     /**
      * Gets called when the block is clicked by a {@link Entity}
      *
-     * @return The {@link InteractionResult} of the interaction
+     * @return The {@link ActionResult} of the interaction
      */
-    default InteractionResult onBlockClicked(World world, Position pos, BlockState state, Entity entity) {
-        return InteractionResult.IGNORE;
+    default ActionResult onBlockClicked(World world, Position pos, BlockState state, Entity entity) {
+        return ActionResult.PASS;
     }
 
     @Override
