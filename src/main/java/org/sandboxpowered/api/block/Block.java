@@ -1,6 +1,7 @@
 package org.sandboxpowered.api.block;
 
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.annotations.Range;
 import org.joml.Vector3fc;
 import org.sandboxpowered.api.Sandbox;
 import org.sandboxpowered.api.entity.Entity;
@@ -16,10 +17,13 @@ import org.sandboxpowered.api.util.InteractionResult;
 import org.sandboxpowered.api.util.Mirror;
 import org.sandboxpowered.api.util.Rotation;
 import org.sandboxpowered.api.util.math.Position;
+import org.sandboxpowered.api.util.shape.Shape;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.WorldReader;
 import org.sandboxpowered.api.world.state.BlockState;
 import org.sandboxpowered.api.world.state.StateProvider;
+
+import java.util.Random;
 
 @SuppressWarnings("unused")
 public interface Block extends RegistryEntry<Block>, ItemProvider {
@@ -32,6 +36,22 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
     StateProvider<Block, BlockState> getStateProvider();
 
     Properties getProperties();
+
+    default BlockState getStateForPlacement(WorldReader reader, Position pos, Entity player, Hand hand, ItemStack stack, Direction side, Vector3fc hitPos) {
+        return getDefaultState();
+    }
+
+    default Shape getShape(WorldReader reader, Position position, BlockState state) {
+        return Shape.fullCube();
+    }
+
+    default Shape getCollisionShape(WorldReader reader, Position position, BlockState state) {
+        return getShape(reader, position, state);
+    }
+
+    default Shape getOcclusionShape(WorldReader reader, Position position, BlockState state) {
+        return getShape(reader, position, state);
+    }
 
     /**
      * Gets called when the block is placed
@@ -65,12 +85,45 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
 
     }
 
+    default void onNeighborChanged(BlockState state, World world, Position position, Block other, Position otherPosition) {
+
+    }
+
+    default void randomTick(World serverWorld, Position position, BlockState blockState, Random random) {
+    }
+
+    default void scheduledTick(World serverWorld, Position position, BlockState blockState, Random random) {
+    }
+
     default boolean canEntitySpawnWithin() {
         return getProperties().getMaterial().isNonSolid() && !getProperties().getMaterial().isLiquid();
     }
 
     default ItemStack getPickStack(WorldReader reader, Position position, BlockState state) {
         return ItemStack.of(this);
+    }
+
+    default boolean doesEmitRedstone(BlockState state) {
+        return false;
+    }
+
+    default boolean hasComparatorValue(BlockState state) {
+        return false;
+    }
+
+    @Range(from = 0, to = 15)
+    default int getComparatorValue(WorldReader world, Position pos, BlockState state) {
+        return 0;
+    }
+
+    @Range(from = 0, to = 15)
+    default int getWeakPower(WorldReader blockView, Position pos, BlockState state, Direction direction) {
+        return 0;
+    }
+
+    @Range(from = 0, to = 15)
+    default int getStrongPower(WorldReader blockView, Position pos, BlockState state, Direction direction) {
+        return 0;
     }
 
     /**
@@ -94,6 +147,16 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
     @Override
     default Registry<Block> getRegistry() {
         return REGISTRY;
+    }
+
+    default RenderType getRenderType() {
+        return RenderType.MODEL;
+    }
+
+    enum RenderType {
+        MODEL,
+        DYNAMIC,
+        INVISIBLE
     }
 
     interface Properties {
