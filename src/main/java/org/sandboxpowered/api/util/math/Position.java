@@ -5,15 +5,15 @@ import org.sandboxpowered.api.util.Direction;
 
 public interface Position {
 
-    public static Position immutable(int x, int y, int z) {
+    static Position immutable(int x, int y, int z) {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).immutable(x, y, z);
     }
 
-    public static Position mutable(int x, int y, int z) {
+    static Position mutable(int x, int y, int z) {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).mutable(x, y, z);
     }
 
-    public static Position mutable() {
+    static Position mutable() {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).mutable(0, 0, 0);
     }
 

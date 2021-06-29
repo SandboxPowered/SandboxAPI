@@ -17,6 +17,7 @@ public interface StateProvider<T extends RegistryEntry<T>, S extends PropertyCon
 
     interface StateFactory {
         <T extends RegistryEntry<T>, S extends PropertyContainer<S>, E extends T> Builder<T, S> createBuilder(E object);
-        <T extends RegistryEntry<T>, S extends PropertyContainer<S>, E extends T> StateProvider<T, S> create(Builder<T,S> builder);
+
+        <T extends RegistryEntry<T>, S extends PropertyContainer<S>, E extends T> StateProvider<T, S> create(Builder<T, S> builder);
     }
 }
