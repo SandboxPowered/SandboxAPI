@@ -1,6 +1,8 @@
 package org.sandboxpowered.api.util;
 
-public enum Mirror {
+import java.util.Locale;
+
+public enum Mirror implements StringSerializable {
     /**
      * No Mirror
      */
@@ -14,5 +16,10 @@ public enum Mirror {
     /**
      * Front/Back Mirror
      */
-    Z
+    Z;
+
+    @Override
+    public String value() {
+        return name().toLowerCase(Locale.ENGLISH);
+    }
 }

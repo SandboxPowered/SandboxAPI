@@ -2,13 +2,12 @@ package org.sandboxpowered.api.util;
 
 import java.util.Locale;
 
-public enum Direction implements StringSerializable {
-    NORTH,
-    SOUTH,
-    EAST,
-    WEST,
-    UP,
-    DOWN;
+public enum StairShape implements StringSerializable {
+    STRAIGHT,
+    INNER_LEFT,
+    INNER_RIGHT,
+    OUTER_LEFT,
+    OUTER_RIGHT;
 
     @Override
     public String value() {

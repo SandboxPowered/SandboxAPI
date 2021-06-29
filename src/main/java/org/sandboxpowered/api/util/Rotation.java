@@ -1,6 +1,8 @@
 package org.sandboxpowered.api.util;
 
-public enum Rotation {
+import java.util.Locale;
+
+public enum Rotation implements StringSerializable {
     /**
      * No Rotation
      */
@@ -19,5 +21,10 @@ public enum Rotation {
     /**
      * Clockwise +270 / Counter Clockwise -90
      */
-    NEGATIVE
+    NEGATIVE;
+
+    @Override
+    public String value() {
+        return name().toLowerCase(Locale.ENGLISH);
+    }
 }

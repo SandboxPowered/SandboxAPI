@@ -2,13 +2,9 @@ package org.sandboxpowered.api.util;
 
 import java.util.Locale;
 
-public enum Direction implements StringSerializable {
-    NORTH,
-    SOUTH,
-    EAST,
-    WEST,
-    UP,
-    DOWN;
+public enum BedHalf implements StringSerializable {
+    HEAD,
+    FOOT;
 
     @Override
     public String value() {
