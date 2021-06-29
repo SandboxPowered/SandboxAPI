@@ -10,11 +10,30 @@ import org.sandboxpowered.api.world.state.StateProvider;
 
 public class AbstractBlock implements Block {
     private final QuantumReference<Item> cachedItem = new QuantumReference<>();
-    private final StateProvider<Block, BlockState> stateProvider = Sandbox.getFactoryProvider().provide(StateProvider.StateFactory.class).create(this);
+    private final StateProvider<Block, BlockState> stateProvider;
     private final Properties properties;
+    private final BlockState defaultState;
 
     public AbstractBlock(Properties properties) {
         this.properties = properties;
+        StateProvider.StateFactory stateFactory = Sandbox.getFactoryProvider().provide(StateProvider.StateFactory.class);
+        StateProvider.Builder<Block, BlockState> builder = stateFactory.createBuilder(this);
+        addBlockProperties(builder);
+        this.stateProvider = stateFactory.create(builder);
+        this.defaultState = createDefaultState(stateProvider.getBaseState());
+    }
+
+    @Override
+    public BlockState getDefaultState() {
+        return defaultState;
+    }
+
+    protected BlockState createDefaultState(BlockState base) {
+        return base;
+    }
+
+    protected void addBlockProperties(StateProvider.Builder<Block, BlockState> builder) {
+
     }
 
     @Override
