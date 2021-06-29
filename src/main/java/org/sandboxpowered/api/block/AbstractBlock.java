@@ -18,7 +18,7 @@ public class AbstractBlock implements Block {
         this.properties = properties;
         StateProvider.StateFactory stateFactory = Sandbox.getFactoryProvider().provide(StateProvider.StateFactory.class);
         StateProvider.Builder<Block, BlockState> builder = stateFactory.createBuilder(this);
-        addBlockProperties(builder);
+        appendProperties(builder);
         this.stateProvider = stateFactory.create(builder);
         this.defaultState = createDefaultState(stateProvider.getBaseState());
     }
@@ -32,7 +32,7 @@ public class AbstractBlock implements Block {
         return base;
     }
 
-    protected void addBlockProperties(StateProvider.Builder<Block, BlockState> builder) {
+    protected void appendProperties(StateProvider.Builder<Block, BlockState> builder) {
 
     }
 
