@@ -16,7 +16,7 @@ public class ExampleAddon implements Addon {
         final var blockRegistrar = api.getRegistrar(Block.REGISTRY);
 
         final var exampleItem = itemRegistrar.register("example_item", () -> Item.create(Item.Properties.builder().build()));
-        final var explodingStaff = itemRegistrar.register("exploding_staff", () -> new ExplodingStaffItem(Item.Properties.builder().build(), exampleItem.get()));
+        final var explodingStaff = itemRegistrar.register("exploding_staff", () -> new ExplodingStaffItem(Item.Properties.builder().setDurability(200).build(), exampleItem.get()));
 
         Sandbox.getGame().registerPacket(ExamplePacket.class, ExamplePacket::new, Platform.Type.SERVER);
 

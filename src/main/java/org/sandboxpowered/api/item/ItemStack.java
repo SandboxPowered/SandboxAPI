@@ -31,6 +31,10 @@ public interface ItemStack {
 
     void damage(int amount, Entity user);
 
+    boolean isDamageable();
+
+    boolean isDamaged();
+
     int getCurrentDamage();
 
     int getMaxDamage();

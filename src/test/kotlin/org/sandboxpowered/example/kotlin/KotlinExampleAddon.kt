@@ -23,7 +23,7 @@ fun setup(api: SandboxAPI) {
     }
 
     val explodingStaff by itemRegistrar.registerNullable("exploding_staff") {
-        ExplodingStaffItem(Item.Properties.builder().build(), exampleItem)
+        ExplodingStaffItem(Item.Properties.builder().setDurability(200).build(), exampleItem)
     }
 
     Sandbox.getGame().registerPacket(Platform.Type.SERVER, ::ExamplePacket)

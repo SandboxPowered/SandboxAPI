@@ -14,6 +14,7 @@ import org.sandboxpowered.api.registry.RegistryEntry;
 import org.sandboxpowered.api.registry.RegistryFactory;
 import org.sandboxpowered.api.util.EquipmentSlot;
 import org.sandboxpowered.api.util.TypedActionResult;
+import org.sandboxpowered.api.util.math.Maths;
 import org.sandboxpowered.api.world.World;
 import org.sandboxpowered.api.world.state.BlockState;
 
@@ -23,8 +24,7 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
     Registry<Item> REGISTRY = RegistryFactory.getRegistry(Item.class);
 
     static Item create(Properties properties) {
-        return new AbstractItem(properties) {
-        };
+        return new AbstractItem(properties);
     }
 
     @Override
@@ -61,6 +61,23 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
 
     default Multimap<Attribute, Attribute.Modifier> getAttributeModifiers(EquipmentSlot slot) {
         return ImmutableMultimap.of();
+    }
+
+    default boolean showDurabilityBar(ItemStack stack) {
+        return stack.isDamageable() && stack.isDamaged();
+    }
+
+    default float getDurabilityBarValue(ItemStack stack) {
+        if (!stack.isDamageable())
+            return 0;
+        return 1 - stack.getCurrentDamage() / (float)stack.getMaxDamage();
+    }
+
+    default int getDurabilityBarColor(ItemStack stack) {
+        if (!stack.isDamageable())
+            return -1;
+        float hue = (stack.getMaxDamage() - stack.getCurrentDamage()) / (float) stack.getMaxDamage();
+        return Maths.hsvToRgb(hue / 3f, 1f, 1f);
     }
 
     /**
