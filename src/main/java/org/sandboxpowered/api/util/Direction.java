@@ -145,7 +145,7 @@ public enum Direction implements StringSerializable {
         }
     }
 
-    public enum Axis implements Predicate<Direction> {
+    public enum Axis implements Predicate<Direction>, StringSerializable {
         X("x"),
         Y("y"),
         Z("z");
@@ -156,6 +156,7 @@ public enum Direction implements StringSerializable {
             this.name = name;
         }
 
+        @Override
         public String getName() {
             return this.name;
         }
