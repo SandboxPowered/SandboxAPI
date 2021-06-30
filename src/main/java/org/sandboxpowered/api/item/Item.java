@@ -70,7 +70,7 @@ public interface Item extends RegistryEntry<Item>, ItemProvider {
     default float getDurabilityBarValue(ItemStack stack) {
         if (!stack.isDamageable())
             return 0;
-        return 1 - stack.getCurrentDamage() / (float)stack.getMaxDamage();
+        return 1 - stack.getCurrentDamage() / (float) stack.getMaxDamage();
     }
 
     default int getDurabilityBarColor(ItemStack stack) {
