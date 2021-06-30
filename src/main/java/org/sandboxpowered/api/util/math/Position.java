@@ -9,11 +9,11 @@ public interface Position {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).immutable(x, y, z);
     }
 
-    static Position mutable(int x, int y, int z) {
+    static Position.Mutable mutable(int x, int y, int z) {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).mutable(x, y, z);
     }
 
-    static Position mutable() {
+    static Position.Mutable mutable() {
         return Sandbox.getFactoryProvider().provide(PositionFactory.class).mutable(0, 0, 0);
     }
 
@@ -46,6 +46,6 @@ public interface Position {
     interface PositionFactory {
         Position immutable(int x, int y, int z);
 
-        Position mutable(int x, int y, int z);
+        Position.Mutable mutable(int x, int y, int z);
     }
 }
