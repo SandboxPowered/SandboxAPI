@@ -21,7 +21,15 @@ public interface Game {
 
     Client getClient() throws UnsupportedEngineException;
 
+    CompatibilityMode getCompatibilityMode();
+
     FactoryProvider getFactoryProvider();
 
     <T> void registerPacket(Class<T> type, Function<PacketBuffer, T> reader, Platform.Type side);
+
+    enum CompatibilityMode {
+        VANILLA,
+        SILICA,
+        OTHER
+    }
 }
