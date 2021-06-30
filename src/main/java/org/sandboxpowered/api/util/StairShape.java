@@ -10,7 +10,7 @@ public enum StairShape implements StringSerializable {
     OUTER_RIGHT;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

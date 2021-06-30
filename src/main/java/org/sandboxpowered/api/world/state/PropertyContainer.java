@@ -1,5 +1,7 @@
 package org.sandboxpowered.api.world.state;
 
+import org.sandboxpowered.api.world.state.property.Property;
+
 public interface PropertyContainer<S> {
     <T extends Comparable<T>> T get(Property<T> property);
 

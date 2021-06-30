@@ -1,6 +1,7 @@
 package org.sandboxpowered.api.world.state;
 
 import org.sandboxpowered.api.registry.RegistryEntry;
+import org.sandboxpowered.api.world.state.property.Property;
 
 import java.util.Collection;
 

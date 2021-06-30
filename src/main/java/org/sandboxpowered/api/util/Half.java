@@ -7,7 +7,7 @@ public enum Half implements StringSerializable {
     BOTTOM;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

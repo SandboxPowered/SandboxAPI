@@ -7,7 +7,7 @@ public enum Hinge implements StringSerializable {
     RIGHT;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

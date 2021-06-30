@@ -7,7 +7,7 @@ public enum BedHalf implements StringSerializable {
     FOOT;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

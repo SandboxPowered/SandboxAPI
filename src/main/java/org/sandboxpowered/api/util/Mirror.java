@@ -19,7 +19,7 @@ public enum Mirror implements StringSerializable {
     Z;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

@@ -8,7 +8,7 @@ public enum SlabHalf implements StringSerializable {
     DOUBLE;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

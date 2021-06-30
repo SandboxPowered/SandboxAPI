@@ -24,7 +24,7 @@ public enum Rotation implements StringSerializable {
     NEGATIVE;
 
     @Override
-    public String value() {
+    public String getName() {
         return name().toLowerCase(Locale.ENGLISH);
     }
 }

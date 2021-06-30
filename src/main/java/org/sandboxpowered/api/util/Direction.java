@@ -92,17 +92,13 @@ public enum Direction implements StringSerializable {
         return vector;
     }
 
+    @Override
     public String getName() {
         return this.name;
     }
 
     public Axis getAxis() {
         return this.axis;
-    }
-
-    @Override
-    public String value() {
-        return getName();
     }
 
     public enum Type implements Predicate<Direction>, Iterable<Direction> {
