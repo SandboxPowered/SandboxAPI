@@ -1,8 +1,10 @@
 package org.sandboxpowered.example;
 
 import org.sandboxpowered.api.entity.Entity;
+import org.sandboxpowered.api.network.NetworkContext;
 import org.sandboxpowered.api.network.Packet;
-import org.sandboxpowered.api.network.PacketBuffer;
+import org.sandboxpowered.api.network.ReadablePacketBuffer;
+import org.sandboxpowered.api.network.WritablePacketBuffer;
 
 public class ExamplePacket implements Packet {
     private final float x, y, z;
@@ -13,21 +15,23 @@ public class ExamplePacket implements Packet {
         this.z = z;
     }
 
-    public ExamplePacket(PacketBuffer buffer) {
+    public ExamplePacket(ReadablePacketBuffer buffer) {
         x = buffer.readFloat();
         y = buffer.readFloat();
         z = buffer.readFloat();
     }
 
     @Override
-    public void write(PacketBuffer buffer) {
+    public void write(WritablePacketBuffer buffer) {
         buffer.writeFloat(x);
         buffer.writeFloat(y);
         buffer.writeFloat(z);
     }
 
     @Override
-    public void handle(Entity sender) {
-        sender.getWorld().explode(sender, x, y, z, 2f, true, true);
+    public void handle(NetworkContext context) {
+        Entity sender = context.getSender();
+        if (sender != null)
+            sender.getWorld().explode(sender, x, y, z, 2f, true, true);
     }
 }

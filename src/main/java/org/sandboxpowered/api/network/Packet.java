@@ -1,9 +1,7 @@
 package org.sandboxpowered.api.network;
 
-import org.sandboxpowered.api.entity.Entity;
-
 public interface Packet {
-    void write(PacketBuffer buffer);
+    void write(WritablePacketBuffer buffer);
 
-    void handle(Entity sender);
+    void handle(NetworkContext context);
 }

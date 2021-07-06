@@ -2,7 +2,7 @@ package org.sandboxpowered.api.engine;
 
 import org.sandboxpowered.api.client.Client;
 import org.sandboxpowered.api.engine.Engine.UnsupportedEngineException;
-import org.sandboxpowered.api.network.PacketBuffer;
+import org.sandboxpowered.api.network.ReadablePacketBuffer;
 import org.sandboxpowered.api.server.Server;
 
 import java.nio.file.Path;
@@ -25,7 +25,7 @@ public interface Game {
 
     FactoryProvider getFactoryProvider();
 
-    <T> void registerPacket(Class<T> type, Function<PacketBuffer, T> reader, Platform.Type side);
+    <T> void registerPacket(Class<T> type, Function<ReadablePacketBuffer, T> reader, Platform.Type side);
 
     enum CompatibilityMode {
         VANILLA,

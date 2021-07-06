@@ -1,7 +1,5 @@
 package org.sandboxpowered.api.network;
 
-public interface PacketBuffer {
-    float readFloat();
+public interface PacketBuffer extends ReadablePacketBuffer, WritablePacketBuffer {
 
-    void writeFloat(float value);
 }

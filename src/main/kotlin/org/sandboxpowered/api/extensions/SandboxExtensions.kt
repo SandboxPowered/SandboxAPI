@@ -7,7 +7,7 @@ import org.sandboxpowered.api.engine.Platform
 import org.sandboxpowered.api.entity.Entity
 import org.sandboxpowered.api.entity.component.Component
 import org.sandboxpowered.api.network.Packet
-import org.sandboxpowered.api.network.PacketBuffer
+import org.sandboxpowered.api.network.ReadablePacketBuffer
 import org.sandboxpowered.api.registry.DeferredRegistrar
 import org.sandboxpowered.api.registry.RegistryEntry
 import org.sandboxpowered.api.registry.RegistryObject
@@ -33,7 +33,7 @@ fun <T : RegistryEntry<T>> DeferredRegistrar<T>.registerNullable(
 ): ReadOnlyProperty<Any?, T?> = RegistryObjectSafeDelegate(register(id, supplier))
 
 @JvmSynthetic
-inline fun <reified T : Packet> Game.registerPacket(side: Platform.Type, noinline reader: (buffer: PacketBuffer) -> T) =
+inline fun <reified T : Packet> Game.registerPacket(side: Platform.Type, noinline reader: (buffer: ReadablePacketBuffer) -> T) =
     registerPacket(T::class.java, reader, side)
 
 @JvmSynthetic
