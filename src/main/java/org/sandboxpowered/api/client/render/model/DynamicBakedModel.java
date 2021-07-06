@@ -1,7 +1,7 @@
 package org.sandboxpowered.api.client.render.model;
 
 import org.sandboxpowered.api.client.render.RenderContext;
-import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.content.item.ItemStack;
 import org.sandboxpowered.api.util.math.Position;
 import org.sandboxpowered.api.world.WorldReader;
 import org.sandboxpowered.api.world.state.BlockState;

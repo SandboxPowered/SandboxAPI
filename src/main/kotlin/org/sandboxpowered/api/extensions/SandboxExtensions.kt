@@ -4,8 +4,8 @@ import org.sandboxpowered.api.addon.SandboxAPI
 import org.sandboxpowered.api.addon.service.CreationService
 import org.sandboxpowered.api.engine.Game
 import org.sandboxpowered.api.engine.Platform
-import org.sandboxpowered.api.entity.Entity
-import org.sandboxpowered.api.entity.component.Component
+import org.sandboxpowered.api.content.entity.Entity
+import org.sandboxpowered.api.content.entity.component.Component
 import org.sandboxpowered.api.network.Packet
 import org.sandboxpowered.api.network.ReadablePacketBuffer
 import org.sandboxpowered.api.registry.DeferredRegistrar

@@ -1,6 +1,6 @@
 package org.sandboxpowered.api.util;
 
-import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.engine.Sandbox;
 
 public interface Identifier extends Comparable<Identifier> {
     static Identifier of(String id) {

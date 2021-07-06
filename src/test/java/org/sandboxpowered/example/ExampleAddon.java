@@ -1,13 +1,13 @@
 package org.sandboxpowered.example;
 
-import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.engine.Sandbox;
 import org.sandboxpowered.api.addon.Addon;
 import org.sandboxpowered.api.addon.SandboxAPI;
 import org.sandboxpowered.api.addon.service.resource.ResourceConstants;
 import org.sandboxpowered.api.addon.service.resource.ResourceService;
-import org.sandboxpowered.api.block.Block;
+import org.sandboxpowered.api.content.block.Block;
 import org.sandboxpowered.api.engine.Platform;
-import org.sandboxpowered.api.item.Item;
+import org.sandboxpowered.api.content.item.Item;
 
 public class ExampleAddon implements Addon {
     @Override

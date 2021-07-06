@@ -1,6 +1,6 @@
 package org.sandboxpowered.example;
 
-import org.sandboxpowered.api.entity.Entity;
+import org.sandboxpowered.api.content.entity.Entity;
 import org.sandboxpowered.api.network.NetworkContext;
 import org.sandboxpowered.api.network.Packet;
 import org.sandboxpowered.api.network.ReadablePacketBuffer;

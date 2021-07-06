@@ -1,7 +1,7 @@
 package org.sandboxpowered.api.addon.service.resource;
 
 import org.jetbrains.annotations.NotNull;
-import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.content.item.ItemStack;
 import org.sandboxpowered.api.registry.RegistryEntry;
 
 import java.util.Map;

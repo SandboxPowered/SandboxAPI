@@ -1,11 +1,11 @@
 package org.sandboxpowered.api.addon.service.resource;
 
-import org.sandboxpowered.api.block.AbstractBlock;
-import org.sandboxpowered.api.block.Block;
-import org.sandboxpowered.api.block.Materials;
-import org.sandboxpowered.api.item.Item;
-import org.sandboxpowered.api.item.ItemStack;
-import org.sandboxpowered.api.item.tool.ToolType;
+import org.sandboxpowered.api.content.block.AbstractBlock;
+import org.sandboxpowered.api.content.block.Block;
+import org.sandboxpowered.api.content.block.Materials;
+import org.sandboxpowered.api.content.item.Item;
+import org.sandboxpowered.api.content.item.ItemStack;
+import org.sandboxpowered.api.content.item.tool.ToolType;
 import org.sandboxpowered.api.registry.RegistryEntry;
 
 import java.util.function.Function;

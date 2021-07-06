@@ -1,12 +1,12 @@
 package org.sandboxpowered.example;
 
-import org.sandboxpowered.api.entity.Entity;
-import org.sandboxpowered.api.entity.component.InventoryComponent;
-import org.sandboxpowered.api.entity.component.PositionComponent;
-import org.sandboxpowered.api.item.AbstractItem;
-import org.sandboxpowered.api.item.Hand;
-import org.sandboxpowered.api.item.Item;
-import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.content.entity.Entity;
+import org.sandboxpowered.api.content.entity.component.InventoryComponent;
+import org.sandboxpowered.api.content.entity.component.PositionComponent;
+import org.sandboxpowered.api.content.item.AbstractItem;
+import org.sandboxpowered.api.content.item.Hand;
+import org.sandboxpowered.api.content.item.Item;
+import org.sandboxpowered.api.content.item.ItemStack;
 import org.sandboxpowered.api.util.TypedActionResult;
 import org.sandboxpowered.api.world.World;
 

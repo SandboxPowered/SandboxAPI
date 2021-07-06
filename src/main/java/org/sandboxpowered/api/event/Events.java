@@ -1,8 +1,8 @@
 package org.sandboxpowered.api.event;
 
-import org.sandboxpowered.api.entity.Entity;
-import org.sandboxpowered.api.item.Hand;
-import org.sandboxpowered.api.item.ItemStack;
+import org.sandboxpowered.api.content.entity.Entity;
+import org.sandboxpowered.api.content.item.Hand;
+import org.sandboxpowered.api.content.item.ItemStack;
 import org.sandboxpowered.api.util.ActionResult;
 import org.sandboxpowered.api.util.math.Position;
 import org.sandboxpowered.api.world.World;

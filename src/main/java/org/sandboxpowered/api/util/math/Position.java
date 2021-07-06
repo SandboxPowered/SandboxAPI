@@ -1,6 +1,6 @@
 package org.sandboxpowered.api.util.math;
 
-import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.engine.Sandbox;
 import org.sandboxpowered.api.util.Direction;
 
 public interface Position {

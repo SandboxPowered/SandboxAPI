@@ -1,6 +1,6 @@
 package org.sandboxpowered.api.event;
 
-import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.engine.Sandbox;
 
 public interface EventFactory {
     static <E> Event<E> createEventHandler() {

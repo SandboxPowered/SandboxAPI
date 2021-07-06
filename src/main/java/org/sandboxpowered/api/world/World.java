@@ -1,6 +1,6 @@
 package org.sandboxpowered.api.world;
 
-import org.sandboxpowered.api.entity.Entity;
+import org.sandboxpowered.api.content.entity.Entity;
 
 public interface World extends WorldReader, WorldWriter {
     DimensionType getType();

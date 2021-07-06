@@ -1,6 +1,6 @@
 package org.sandboxpowered.api.registry;
 
-import org.sandboxpowered.api.Sandbox;
+import org.sandboxpowered.api.engine.Sandbox;
 
 public interface RegistryFactory {
     static <T extends RegistryEntry<T>> Registry<T> getRegistry(Class<T> tClass) {
