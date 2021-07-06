@@ -1,8 +1,8 @@
 package org.sandboxpowered.api.content.entity;
 
 import org.jetbrains.annotations.ApiStatus;
-import org.sandboxpowered.api.engine.Sandbox;
 import org.sandboxpowered.api.content.item.Hand;
+import org.sandboxpowered.api.engine.Sandbox;
 
 import java.util.stream.Stream;
 

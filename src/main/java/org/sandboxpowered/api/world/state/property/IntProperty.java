@@ -2,7 +2,6 @@ package org.sandboxpowered.api.world.state.property;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Sets;
-import org.jetbrains.annotations.Range;
 
 import java.util.Collection;
 import java.util.Optional;

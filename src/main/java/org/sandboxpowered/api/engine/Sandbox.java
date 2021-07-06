@@ -3,8 +3,6 @@ package org.sandboxpowered.api.engine;
 import com.google.inject.Inject;
 import org.sandboxpowered.api.client.Client;
 import org.sandboxpowered.api.engine.Engine.UnsupportedEngineException;
-import org.sandboxpowered.api.engine.FactoryProvider;
-import org.sandboxpowered.api.engine.Game;
 import org.sandboxpowered.api.server.Server;
 
 import java.util.Objects;

@@ -1,8 +1,8 @@
 package org.sandboxpowered.api.content.item;
 
-import org.sandboxpowered.api.engine.Sandbox;
 import org.sandboxpowered.api.content.enchantment.Enchantment;
 import org.sandboxpowered.api.content.entity.Entity;
+import org.sandboxpowered.api.engine.Sandbox;
 
 public interface ItemStack {
     static ItemStack empty() {
