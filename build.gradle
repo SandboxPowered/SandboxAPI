@@ -2,7 +2,7 @@ plugins {
     id "java-library"
     id "maven-publish"
     id "me.qoomon.git-versioning" version "4.2.0"
-    id 'org.jetbrains.kotlin.jvm' version '1.5.20-RC'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.20'
 }
 
 def ENV = System.getenv()
@@ -67,7 +67,7 @@ repositories {
 
 dependencies {
     api group: "org.joml", name: "joml", version: "1.10.1"
-    api group: "org.jetbrains", name: "annotations", version: "20.1.0"
+    api group: "org.jetbrains", name: "annotations", version: "21.0.1"
     api group: "com.google.code.findbugs", name: "jsr305", version: "3.0.2"
     api group: "com.mojang", name: "datafixerupper", version: "1.0.20"
     api group: "com.mojang", name: "brigadier", version: "1.0.17"
