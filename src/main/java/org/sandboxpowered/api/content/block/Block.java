@@ -111,8 +111,12 @@ public interface Block extends RegistryEntry<Block>, ItemProvider {
 
     }
 
-    default void onNeighborChanged(BlockState state, World world, Position position, Block other, Position otherPosition) {
+    default void onNeighborChanged(World world, Position position, Direction direction, BlockState state, Block other, Position otherPosition) {
 
+    }
+
+    default BlockState updateOnNeighborChanged(World world, Position position, Direction direction, BlockState state, Block other, Position otherPosition) {
+        return state;
     }
 
     default void randomTick(World serverWorld, Position position, BlockState blockState, Random random) {
